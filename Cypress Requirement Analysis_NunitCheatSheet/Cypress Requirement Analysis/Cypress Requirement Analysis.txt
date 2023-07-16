@@ -1,0 +1,72 @@
+To open test runner in cypress :-
+1. Open VSCode terminal and cd to where your project is and cypress is downloaded
+2. run in terminal npx cypress open
+
+
+
+javascript frameworks :-
+1. Jasmine
+2. Mocha
+3. Cypress suggests mocha framework.
+
+browser supported by cypress :-
+1. Chrome
+2. Firefox
+3. Microsoft Edge
+4. Electron 
+	(kind of chrome. uses chromium as underhood for rendering any chrome html. but it will minimize work by excluding so many options other browsers have. high performance)
+	(highly suggested by cypress)
+	
+extra commands to run in VSC terminal :-
+1. To handle an iframe :-
+	firstly go into a new terminal & run cmmnd => npm install -D cypress-iframe
+2. To handle mocha dashboard
+	firstly go into a new terminal & run cmmnd => npm install --save-dev mochawesome
+	//now goto cypress.json {"reporter": "mochawesome"}
+	npx cypress run --reporter mochawesome --spec
+3. to get cypress dashboard
+	npx cypress run --record --key <get the record key from your settings in Test Runner> --spec <copy path of the file u want to run & paste it here>
+	
+100. My experimental commands
+		1. to run a specific folder
+		=> npx cypress run --spec <copy path of the folder u want to run & paste it here>\*
+		==>> npx cypress run --spec cypress\integration\my-Cypress-Demo\*
+		2. to run the same in cypress dashboard
+		=> npx cypress run --record --key <get the record key from your settings in Test Runner> --spec <copy path of the folder u want to run & paste it here>\*
+		==>> npx cypress run --record --key b2e5550f-3ae4-402a-b580-91ee50d991a5 --spec cypress\integration\my-Cypress-Demo\*
+		   
+4. Integrating with Jenkins CI
+5. BDD (Behaviour Driven Development) Framework ==>> Cucumber
+	1. Install a plugin
+	=> npm install --save-dev cypress-cucumber-preprocessor
+	2. Add in plugins/index.js
+	==>> const cucumber = require('cypress-cucumber-preprocessor').default
+			module.exports = (on, config) => {
+			on('file:preprocessor', cucumber())}
+	3. Add in cypress.json
+	==>> "testfiles": "**/*.feature"
+	4. Add in package.json
+	==>> "cypress-cucumber-preprocessor": {
+			"nonGlobalStepDefinitions": true}
+	5. Create a new folder in my-Cypress-Demo folder as BDD-Cucumber-Demo-> In it make a file ecommerce.feature & also a folder named ecommerce -> In it create ecomStepDef.js (for code inserting) & beforeEach.js (for implementing hooks)
+																						(Remember name of feature file & this folder name must be same as we are doing)
+	6. Also install VSC cucumber bdd extension (just google it & install it)																					
+	7. we are running here the feature file.
+	=> npx cypress run --spec <copy path of the feature file>
+	==>> npx cypress run --spec cypress\integration\my-Cypress-Demo\BDD-Cucumber-Demo\ecommerce.feature --headed --browser chrome
+	8. For running only one scenario in feature file, 1st tag it with @, then to run it
+	==>> npx cypress-tags run -e TAGS="@Smoke" --headed --browser chrome
+	9. cucumber dashboard
+		1. In Package.json add
+			"cucumberJson": {
+			"generate": true,
+			"outputFolder": "cypress/cucumber-json",
+			"filePrefix": "",
+			"fileSuffix": ".cucumber"
+			}  ==> A new cucumber-json folder is generated, & in it there is a a file with suffix .cucumber.json
+		2. npm install multiple-cucumber-html-reporter --save-dev
+		3. Then copy the code and paste it in a file called cucumber-html-report.js, & change it accordingly.
+		4. Now run ==>> node cucumber-html-report.js
+		5. A new html file is generated in reports folder according to what we mentioned in cucumber-html-report.js. Now enjoy the report.
+
+6. Injecting JWT session token into browser local storage with Cypress.

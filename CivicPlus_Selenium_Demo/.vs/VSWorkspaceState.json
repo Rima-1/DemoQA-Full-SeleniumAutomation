@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CivicPlus_Selenium_Demo",
+    "\\CivicPlus_Selenium_Demo\\PageManagers",
+    "\\CivicPlus_Selenium_Demo\\PageManagers\\DemoQA_Alerts_Frames_Windows_Pages",
+    "\\CivicPlus_Selenium_Demo\\PageManagers\\DemoQA_InteractionsPages",
+    "\\CivicPlus_Selenium_Demo\\PageManagers\\DemoQA_WidgetsPages",
+    "\\CivicPlus_Selenium_Demo\\ProjectHelpers",
+    "\\CivicPlus_Selenium_Demo\\TestManager"
+  ],
+  "SelectedNode": "\\CivicPlus_Selenium_Demo\\PageManagers\\DemoQA_WidgetsPages\\SliderPage.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,41 @@
+1. navigating to url - cy.visit("");
+2. cross browser testing --
+	1. just go to test runner.
+	2. on RHS, u get options to select browsers to run your test.
+	
+3.put all test data in fixtures folder (like excel data and all fetching codes)
+4. plugins folder (listeners)
+	1. if you want to set your browser in full screen mode
+	2. on browser invoke do this steps on test failure
+	3. don't use it much
+5. support folder
+	1. one method which is used across multiple test cases support/command.js
+6. cypress supports only css selectors.
+	1. id => #idname
+	2. classname => .classname or tagname.classname
+	3. any other attribute => tagname[attribute=value] ----- eg :- input[type='search']
+	4. parent-child cases => parent_tagname child_tagname -------- eg:- form input
+	5. nth child in css => tr td:nth-child(2)
+	6. if there are multiple types of button, & u want to select last one -->> .card-body button:last-of-type
+	5. easiest way => run the cypress test. in the new window, click on selectors playground. and click on any button or link to get css selectors.
+7. We can see what happened on every step with sst & error messages in cypress. debugging in cypress is easiest.
+8. Cypress is asynchronous in nature and there is no guarantee in sequence of execution, but cypress takes care of it with wrappers.
+9. every asynchronous steps returns a Promise, which comes with resolved (executed successfully), rejection (error in execution), pending (yet to execute, still loading).
+10. .then(() => {return cy.get(.......) }) ------ it is telling let the above step gets resolved then move to next step. (noisy demonstration) (secret to make cypress asynchronous by cypress)
+11. cypress auto accepts alert and popups
+12. cypress have capability to listen browser events.
+13. cypress have ability to manipulate DOM.
+14 Cypress we can use aliases to reuse (@)locators.  
+	eg :- 
+	//alias all of the tr's found on the table as rows
+	cy.get('table').find('tr').as('rows')
+	//cypress returns the reference to the <tr>'s which allow us to continue to chain commands finding 1st row
+	cy.get('@rows').first().click()
+15. you can traverse to sibling with next & it only works on get()
+
+
+
+16. before() runs once before all tests in the describe({})
+17. beforeEach() runs before every it({})
+17. vice versa for after() & afterEach()
+18. cy.pause() / cy.debug() to pause everything after this line and then debug

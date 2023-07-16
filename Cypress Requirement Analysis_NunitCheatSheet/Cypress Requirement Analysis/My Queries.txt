@@ -1,0 +1,10 @@
+1. Iframe error in test2
+2. need to keep before hook before describe block because of mocha framework setup.(told by udemy trainer) But, watch in https://mochajs.org/# (may be coz of sec. async hooks)
+	before hook describe block ke andar rkhne se error aa rha hai -- "Cannot read properties of undefined (reading 'myname') cypress"
+
+3. "cypressRecordKey": "npx cypress run test -- --record --key b2e5550f-3ae4-402a-b580-91ee50d991a5",
+    "cypressPOC": "npx cypress run  --spec \"cypress/integration/my-cypress-demo/*\""
+
+scipts in package.json not working.
+
+4. a demo website to download csv file. 
